@@ -220,7 +220,7 @@ function gen_solution (M, helper, n) {
     M[x][y] = step;
     while ( true ) {
         if ( step == n * n) {
-            console.log ('eureka!!!');
+            alert ('eureka!!!');
             return true;
         }
         var soluciones = [];
@@ -232,7 +232,7 @@ function gen_solution (M, helper, n) {
             }
         }
         if (soluciones.length == 0) {
-           console.log ("fail!!");
+           alert("fail!!");
            break;
         }
         var idx = use_helper (soluciones, helper) ;

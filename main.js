@@ -2,28 +2,9 @@ var generar = document.getElementById('ejecutar');
 var tablero = document.getElementById('tablero');
 var siguiente= document.getElementById('next');
 
-    generar.onclick = function () {
-    tablero.innerHTML = '';
-    var n = parseInt(document.getElementById('lados').value);  
-    var tabla = document.createElement('table');
-    tabla.border = "1";
-    for (var i = 0; i < n; i++) {
-        var fila = document.createElement('tr');
-        for (var j = 0; j < n; j++) {
-            var celda = document.createElement('td');
-            if (i % 2 == 0 && j % 2 != 0 || i % 2 != 0 && j % 2 == 0) {
-                celda.setAttribute('class', 'negro');
-            }
-                        
-            fila.appendChild(celda);
-        }
-        tabla.appendChild(fila);
-    }
-    tablero.appendChild(tabla);
-}
+    
 
 
-siguiente.onclick= function(){
 
 function printMatrix (M){
     console.log ("___________________");
@@ -134,6 +115,26 @@ function initMatrix (n) {
     return matrix;
 }
 
+    generar.onclick = function () {
+    tablero.innerHTML = '';
+    var n = parseInt(document.getElementById('lados').value);  
+    var tabla = document.createElement('table');
+    tabla.border = "1";
+    for (var i = 0; i < n; i++) {
+        var fila = document.createElement('tr');
+        for (var j = 0; j < n; j++) {
+            var celda = document.createElement('td');
+            if (i % 2 == 0 && j % 2 != 0 || i % 2 != 0 && j % 2 == 0) {
+                celda.setAttribute('class', 'negro');
+                fila.setAttribute('class','blanco');
+            }
+                        
+            fila.appendChild(celda);
+        }
+        tabla.appendChild(fila);
+    }
+    tablero.appendChild(tabla);
+}
 
     tablero.innerHTML = '';
     var n = parseInt(document.getElementById('lados').value);
@@ -146,9 +147,6 @@ function initMatrix (n) {
             break;
         }
     }
-            var p = document.createElement('p');
-            p.innerHTML = M[i][j];
-            celda.appendChild(p);                       
-            
-}
 
+
+  

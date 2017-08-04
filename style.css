@@ -1,6 +1,12 @@
+.body{
+	background-image: url(fondocolores.gif);
+}
 .negro{
-  background-color: blue;
+  background-color: black;
   color:white;
+}
+.blanco{
+	background-color: red;
 }
 
 td{
@@ -8,7 +14,9 @@ td{
   height: 40px;
 
 }
-
+h1{
+	color: red;
+}
 .ajedrezito{
 	
 }

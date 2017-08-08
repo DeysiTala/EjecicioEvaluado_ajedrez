@@ -1,17 +1,14 @@
 //var generar = document.getElementById('ejecutar');
 var tablero = document.getElementById('tablero');
-var paso = document.getElementById("steps");
-var pasito = [];
-var m2;
-var contador=1;
-
+var pasitoaPasito = document.getElementById('steps');
+var pasito= 1;
 
 function generarTabla(){
 
 function printMatrix (M){
     console.log ("___________________");
     for (var i = 0; i < M.length; i++)
-        console.log (M[i]);   
+        //console.log (M[i]);   
     console.log ("___________________");
 }
 function check (i, j, n) {
@@ -263,10 +260,19 @@ function initMatrix (n) {
 }
 
 //generar.onclick = function () {
-
-  function tablita(array, n)
     tablero.innerHTML = '';
     var n = parseInt(document.getElementById('lados').value);
+    
+    for( var i = 0; i < 1000; i++) {
+        var M = initMatrix (n);
+        var helper = gen_heuristic (n);
+        if (gen_solution (M, helper, n) ) {
+            
+            
+            break;
+        }
+    }
+    
     var tabla = document.createElement('table');
     tabla.border = "1";
     for (var i = 0; i < n; i++) {
@@ -287,52 +293,45 @@ function initMatrix (n) {
     }
     tablero.appendChild(tabla);
 }
-    
-    
-    for( var i = 0; i < 1000; i++) {
-        var M = initMatrix (n);
-        var helper = gen_heuristic (n);
-        if (gen_solution (M, helper, n) ) {
-            printMatrix (M);
-            break;
-        }
-    }
-    
-    
 
-function solu (n){
-    for( var i = 0; i < 1000; i++) {
+/*function solutio(){
+
+  for( var i = 0; i < 1000; i++) {
         var M = initMatrix (n);
         var helper = gen_heuristic (n);
         if (gen_solution (M, helper, n) ) {
+            
+            
             break;
-        }
-    }
-    return M;
 }
 
-paso.onclick = function(){
-    tablero.innerHTML = '';
-    var n = parseInt(document.getElementById('lados').value);
-    pasito.push(contador);
-    var array=new Array(n);
-    for (var i = 0; i < n; i++){
-        array[i] = new Array(n);
-        for (var j = 0; j < array[i].length; j++) {
-             array[i][j]=' ';           
-        }
-    }
+}
+return M;
+}*/
 
-    for (var i = 0; i < n; i++) {
-        for (var j = 0; j < n; j++) {
-            for (var k = 0; k < pasito.length; k++) {
-               if(m2[i][j] ==pasito[k]){
-                array[i][j]=pasito[k];
-                } 
-            }
-        }
-    }
 
-    contador++;
-    tablita(array,n);
+pasitoaPasito.onclick = function(){
+
+
+tablero.innerHTML = '';
+var n = parseInt(document.getElementById('lados').value);
+    
+var M = solutio(n)
+var array = new Array(n);
+
+    for( var i = 0; i < n; i++) {
+        array[i]= new Array(n);
+        }
+    
+  for( var i = 0; i < n; i++) {  
+    for( var j = 0; j < n; j++) {
+        array[i]= new Array(n);
+           if(M[i][j]==pasito){
+            array[i][j]=pasito;
+           } 
+            
+}
+}
+printMatrix(array);
+pasito++;
 }
